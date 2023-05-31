@@ -5,4 +5,7 @@ public class Aluno extends Usuario{
 	String matricula;
 	Historico historico;
 	// Cada aluno tem um histórico. O hitórico pode ser um array de disciplinas, e cada disciplina tem uma nota.
+	
+	public void cadastraAluno() {
+	}
 }

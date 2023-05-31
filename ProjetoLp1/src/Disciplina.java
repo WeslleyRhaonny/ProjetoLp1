@@ -1,6 +1,6 @@
 
 public class Disciplina {
-	double nota1;
-	double nota2;
-	double nota3;
+	// As disciplinas devem ter 3 notas (que podem ser dadas como array list).
+	double notas[];
+	double media;
 }
