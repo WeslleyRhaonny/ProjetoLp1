@@ -1,5 +1,8 @@
+package usuarios;
 
-public class Professor extends Funcionario{
+import usuarios.Funcionario;
+
+public class Professor extends Funcionario {
 	
 	public double calculaSalario() {
 		return super.salario*0.3;

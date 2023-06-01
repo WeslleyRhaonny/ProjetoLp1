@@ -1,5 +1,8 @@
+package usuarios;
 
-public class Funcionario extends Usuario{
+import usuarios.Usuario;
+
+public class Funcionario extends Usuario {
 	// Para os funcionários da escola (professores e administrativos) deve-se registrar CPF e salário.
 	
 	String cpf;
