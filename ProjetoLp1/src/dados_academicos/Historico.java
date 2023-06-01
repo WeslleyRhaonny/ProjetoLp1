@@ -4,9 +4,9 @@ import dados_academicos.Disciplina;
 
 public class Historico {
 	// no histórico tem que ter cada disciplina.
-	Disciplina portugues;
-	Disciplina matematica;
-	Disciplina ciencias;
-	Disciplina historia;
-	Disciplina geografia;
+	protected Disciplina portugues;
+	protected Disciplina matematica;
+	protected Disciplina ciencias;
+	protected Disciplina historia;
+	protected Disciplina geografia;
 }

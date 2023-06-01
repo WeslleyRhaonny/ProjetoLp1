@@ -15,4 +15,11 @@ public class CriaTurmas {
         turmas.add(new Turma("4º ano", "Manhã"));
         turmas.add(new Turma("4º ano", "Tarde"));
     }
+
+    public static Turma getTurmaPorIndice(int indice) {
+        if (indice >= 0 && indice < turmas.size()) {
+            return turmas.get(indice);
+        }
+        return null;
+    }
 }

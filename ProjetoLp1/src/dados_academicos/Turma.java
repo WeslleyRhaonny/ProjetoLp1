@@ -1,6 +1,7 @@
 package dados_academicos;
 
 import usuarios.Aluno;
+import usuarios.Professor;
 
 import java.util.ArrayList;
 
@@ -8,7 +9,9 @@ public class Turma {
 
 	private String serie;
 	private String turno;
+	private Professor professor;
 	private ArrayList<Aluno> alunos = new ArrayList<>();
+
 
 	public String getSerie() {
 		return serie;
@@ -30,6 +33,15 @@ public class Turma {
 	public void adicionarAluno(Aluno aluno) {
 		alunos.add(aluno);
 	}
+
+	public Professor getProfessor() {
+		return professor;
+	}
+
+	public void setProfessor(Professor professor) {
+		this.professor = professor;
+	}
+
 	public static Turma buscarTurmaPorIndice(int indice, ArrayList<Turma> turmas) {
 		if (indice >= 0 && indice < turmas.size()) {
 			return turmas.get(indice);
@@ -38,6 +50,6 @@ public class Turma {
 		}
 	}
 	public String toString() {
-		return "Serie: " + serie + ", Turno: " + turno + ", Alunos: " + alunos;
+		return "Serie: " + serie + ", Turno: " + turno + ", Professor: " + professor + ", Alunos: " + alunos;
 	}
 }

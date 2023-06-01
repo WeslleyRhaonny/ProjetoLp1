@@ -2,6 +2,7 @@ package main;
 
 import dados_academicos.Turma;
 import usuarios.Aluno;
+import usuarios.Professor;
 
 import java.util.ArrayList;
 
@@ -20,6 +21,14 @@ public class ExibirDados {
         System.out.println("\nDados das Turmas:");
         for (Turma turma : CriaTurmas.turmas) {
             System.out.println(turma);
+        }
+    }
+
+    public static void exibirProfessores(ArrayList<Professor> professores) {
+        // Exibir dados dos alunos
+        System.out.println("\nDados dos professores:");
+        for (Professor professor : professores) {
+            System.out.println(professor);
         }
     }
 }
