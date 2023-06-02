@@ -5,8 +5,8 @@ import usuarios.Usuario;
 public class Funcionario extends Usuario {
 	// Para os funcionários da escola (professores e administrativos) deve-se registrar CPF e salário.
 	
-	private String cpf;
-	private String matricula;
+	protected String cpf;
+	protected String matricula;
 
 	public String getCpf() {
 		return cpf;

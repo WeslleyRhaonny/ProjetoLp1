@@ -13,6 +13,11 @@ public class Turma {
 	private ArrayList<Aluno> alunos = new ArrayList<>();
 
 
+	public Turma(String serie, String turno) {
+		this.serie = serie;
+		this.turno = turno;
+	}
+	
 	public String getSerie() {
 		return serie;
 	}
@@ -25,18 +30,14 @@ public class Turma {
 		return alunos;
 	}
 
-	public Turma(String serie, String turno) {
-		this.serie = serie;
-		this.turno = turno;
+	public Professor getProfessor() {
+		return professor;
 	}
-
+	
 	public void adicionarAluno(Aluno aluno) {
 		alunos.add(aluno);
 	}
 
-	public Professor getProfessor() {
-		return professor;
-	}
 
 	public void setProfessor(Professor professor) {
 		this.professor = professor;
@@ -49,6 +50,7 @@ public class Turma {
 			return null;
 		}
 	}
+	
 	public String toString() {
 		return "Serie: " + serie + ", Turno: " + turno + ", Professor: " + professor + ", Alunos: " + alunos;
 	}

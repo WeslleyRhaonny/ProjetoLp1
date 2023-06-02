@@ -6,14 +6,17 @@ import usuarios.Funcionario;
 import java.util.Scanner;
 
 import static main.CriaTurmas.*;
+
 public class Professor extends Funcionario {
 
-	private Turma turmasprof[];
+	protected Turma turmasprof[];
+	
 	public Professor() {
 		this.turmasprof = new Turma[2]; // Inicializa o array de turmas com tamanho 2
 	}
+	
 	public double calculaSalario() {
-		return super.salario*0.3;
+		return super.salario*2.3;
 	}
 	
 	public void cadastrarProf(){
@@ -50,25 +53,59 @@ public class Professor extends Funcionario {
 			Turma turma = turmas.get(i);
 			System.out.println((i + 1) + ". " + turma.getSerie() + " - " + turma.getTurno());
 		}
-
-		int indiceTurma = scanner.nextInt();
-		Turma turmaSelecionada = getTurmaPorIndice(indiceTurma - 1);
-
-		if (turmaSelecionada != null) {
-			boolean isTurnoPar = indiceTurma % 2 == 0;
-			boolean isTurmaSelecionadaTurnoPar = turmaSelecionada.getTurno().equals("Manhã");
-
-			if ((isTurnoPar && !isTurmaSelecionadaTurnoPar) ||
-					(!isTurnoPar && isTurmaSelecionadaTurnoPar)) {
-				// Turma válida para vinculação
-				turmasprof[0] = turmaSelecionada;
+		
+		int indiceTurma=3;
+		char verificador = 'n';
+		
+		do {
+			
+			indiceTurma = scanner.nextInt();
+			Turma turmaSelecionada = getTurmaPorIndice(indiceTurma - 1);
+			
+			if (turmaSelecionada != null) {
+				boolean isTurnoPar = indiceTurma % 2 == 0;
+				boolean isTurmaSelecionadaTurnoPar = turmaSelecionada.getTurno().equals("Manhã");
+				
+				if(isTurnoPar == true && turmasprof[0] == null && turmaSelecionada.getProfessor()==null) {
+					turmasprof[0]= turmaSelecionada;
+					System.out.println("Turma vinculada!");
+				}else if(isTurnoPar == false && turmasprof[1] == null && turmaSelecionada.getProfessor()==null) {
+					turmasprof[1]= turmaSelecionada;
+					System.out.println("Turma vinculada!");
+				}else {
+					System.out.println("Não foi possível vincular a essa turma.");
+				}
 				turmaSelecionada.setProfessor(professor);
-				System.out.println("Professor vinculado à turma com sucesso!");
-			} else {
-				System.out.println("Turma inválida! Selecione uma turma com turno diferente.");
 			}
-		} else {
-			System.out.println("Número de turma inválido!");
-		}
+				
+//				if ((isTurnoPar && !isTurmaSelecionadaTurnoPar) || (!isTurnoPar && isTurmaSelecionadaTurnoPar)) {
+//					// Turma válida para vinculação
+//					turmasprof[0] = turmaSelecionada;
+//					turmaSelecionada.setProfessor(professor);
+//					System.out.println("Professor vinculado à turma com sucesso!");
+//				} else {
+//					System.out.println("Turma inválida! Selecione uma turma com turno diferente.");
+//				}
+//			} else {
+//				System.out.println("Número de turma inválido!");
+//			} 
+			
+			if((turmasprof[0] == null || turmasprof[1] == null)) {
+				System.out.println("Deseja vincular mais turmas?");
+				verificador = scanner.next().charAt(0);
+				if(verificador == 'S' || verificador == 's') {
+					System.out.println("Digite o número da turma para vincular o professor: ");
+					for (int i = 0; i < turmas.size(); i++) {
+						Turma turma = turmas.get(i);
+						System.out.println((i + 1) + ". " + turma.getSerie() + " - " + turma.getTurno());
+					}
+				}
+			}
+		}while(((indiceTurma<1 || indiceTurma>6) || verificador == 'S' || verificador == 's') && (turmasprof[0] == null || turmasprof[1] == null));
+	}
+	
+	public String toString() {
+		return super.toString() + ", Número de Matrícula: " + getMatricula() + ", CPF: " + getCpf() + ", Salário: " + calculaSalario() + ", Turmas:";
+		// RESOLVER: Como mostrar a turma no toString do professor?
 	}
 }

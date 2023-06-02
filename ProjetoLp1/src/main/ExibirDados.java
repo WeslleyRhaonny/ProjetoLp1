@@ -1,13 +1,15 @@
 package main;
 
 import dados_academicos.Turma;
+import usuarios.Administrativo;
 import usuarios.Aluno;
 import usuarios.Professor;
 
 import java.util.ArrayList;
 
 public class ExibirDados {
-    public static void exibirAlunos(ArrayList<Aluno> alunos) {
+    
+	public static void exibirAlunos(ArrayList<Aluno> alunos) {
         // Exibir dados dos alunos
         System.out.println("\nDados dos Alunos:");
         for (Aluno aluno : alunos) {
@@ -30,5 +32,12 @@ public class ExibirDados {
         for (Professor professor : professores) {
             System.out.println(professor);
         }
+    }
+    
+    public static void exibirAdministrativos(ArrayList<Administrativo> administrativos) {
+    	System.out.println("\nDados dos Administrativos:");
+    	for(Administrativo administrativo : administrativos) {
+    		System.out.println(administrativo);
+    	}
     }
 }
