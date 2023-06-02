@@ -22,7 +22,7 @@ public class Professor extends Funcionario {
 	public void cadastrarProf(){
 		Scanner scanner = new Scanner(System.in);
 
-		System.out.print("Digite o nome do professor: ");
+		System.out.print("\nDigite o nome do professor: ");
 		String nome = scanner.nextLine();
 		setNome(nome);
 
@@ -48,7 +48,7 @@ public class Professor extends Funcionario {
 	public void vincularTurma(Professor professor) {
 		Scanner scanner = new Scanner(System.in);
 
-		System.out.println("Digite o número da turma para vincular o professor: ");
+		System.out.println("\nDigite o número da turma para vincular o professor: ");
 		for (int i = 0; i < turmas.size(); i++) {
 			Turma turma = turmas.get(i);
 			System.out.println((i + 1) + ". " + turma.getSerie() + " - " + turma.getTurno());
@@ -91,10 +91,10 @@ public class Professor extends Funcionario {
 //			} 
 			
 			if((turmasprof[0] == null || turmasprof[1] == null)) {
-				System.out.println("Deseja vincular mais turmas?");
+				System.out.println("\nDeseja vincular mais turmas? \nDigite 'S' para Sim ou 'N' para Não.");
 				verificador = scanner.next().charAt(0);
 				if(verificador == 'S' || verificador == 's') {
-					System.out.println("Digite o número da turma para vincular o professor: ");
+					System.out.println("\nDigite o número da turma para vincular o professor: ");
 					for (int i = 0; i < turmas.size(); i++) {
 						Turma turma = turmas.get(i);
 						System.out.println((i + 1) + ". " + turma.getSerie() + " - " + turma.getTurno());
@@ -103,9 +103,31 @@ public class Professor extends Funcionario {
 			}
 		}while(((indiceTurma<1 || indiceTurma>6) || verificador == 'S' || verificador == 's') && (turmasprof[0] == null || turmasprof[1] == null));
 	}
-	
+
 	public String toString() {
-		return super.toString() + ", Número de Matrícula: " + getMatricula() + ", CPF: " + getCpf() + ", Salário: " + calculaSalario() + ", Turmas:";
-		// RESOLVER: Como mostrar a turma no toString do professor?
+    	StringBuilder turmasString = new StringBuilder();
+    
+    	for (Turma turma : turmasprof) {
+        	if (turma != null) {
+            	turmasString.append(turma.getSerie())
+                	.append(" - ")
+                	.append(turma.getTurno())
+                	.append(", ");
+        	}
+    	}
+    
+    	String turmas = turmasString.toString();
+    	if (!turmas.isEmpty()) {
+        	turmas = turmas.substring(0, turmas.length() - 2); // Remove a vírgula e espaço extra no final
+    	}
+
+		String salarioFormatado = String.format("%.2f", calculaSalario());
+
+    	return super.toString() + ", Número de Matrícula: " + getMatricula() + ", CPF: " + getCpf() + ", Salário: R$ " + salarioFormatado + ", Turmas: " + turmas;
 	}
+	
+	//public String toString() {
+		//return super.toString() + ", Número de Matrícula: " + getMatricula() + ", CPF: " + getCpf() + ", Salário: " + calculaSalario() + ", Turmas:" + turmasprof[0] ", " + turmasprof[1];
+		// RESOLVER: Como mostrar a turma no toString do professor?
+	//}
 }
