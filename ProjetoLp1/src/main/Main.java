@@ -33,8 +33,12 @@ public class Main {
 			System.out.println("5. Dados das turmas");
 			System.out.println("6. Dados dos professores");
 			System.out.println("7. Dados dos administrativos");
+			System.out.println("8. Folha de pagamento");
+			System.out.println("9. Pesquisar usuário específico");
+			System.out.println("10. Visualizar histórico de um aluno específico");
 			System.out.println("0. Sair");
 			System.out.print("Escolha uma opção: ");
+			//faltando implementar 8, 9 e 10
 			int opcao = scanner.nextInt();
 
 			switch (opcao) {
@@ -78,7 +82,20 @@ public class Main {
 					break;
 					
 				case 5:
-					exibirTurmas();
+					System.out.println("Qual turma você deseja imprimir?\n");
+					for (int i = 0; i < turmas.size(); i++) {
+						Turma turma = turmas.get(i);
+						System.out.println((i + 1) + ". " + turma.getSerie() + " - " + turma.getTurno());
+					}
+					System.out.println("7. Exibir todas as turmas");
+					int indiceTurma = scanner.nextInt();
+					if(indiceTurma<7 && indiceTurma>0) {
+						exibirTurmaSelecionada(indiceTurma);
+					} else if(indiceTurma == 7){
+						exibirTurmas();
+					}
+					else
+						System.out.println("Turma Inválida!");
 					break;
 					
 				case 6:

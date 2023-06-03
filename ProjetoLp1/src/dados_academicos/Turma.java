@@ -52,6 +52,6 @@ public class Turma {
 	}
 	
 	public String toString() {
-		return "Serie: " + serie + ", Turno: " + turno + ", Professor: " + professor + ", Alunos: " + alunos;
+		return "\nSerie: " + serie + ", Turno: " + turno + "\nProfessor:\n" + professor + "\nAlunos:\n" + alunos;
 	}
 }

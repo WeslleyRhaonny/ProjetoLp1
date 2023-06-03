@@ -31,6 +31,6 @@ public abstract class Usuario {
 	}
 
 	public String toString() {
-		return "Nome: " + nome + ", Email: " + email + ", Telefone: " + telefone;
+		return "\nNome: " + nome + ", Email: " + email + ", Telefone: " + telefone;
 	}
 }

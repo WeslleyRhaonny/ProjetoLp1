@@ -5,6 +5,16 @@ import usuarios.Funcionario;
 import java.util.Scanner;
 
 public class Administrativo extends Funcionario {
+
+    @Override
+    public String toString() {
+        String salarioFormatado = String.format("%.2f", salario);
+        return super.toString() +
+                ", CPF: " + cpf +
+                ", Matrícula: " + matricula +
+                ", Salário: R$ " + salarioFormatado;
+    }
+
     public void cadastrarAdm(){
         Scanner scanner = new Scanner(System.in);
 
@@ -27,5 +37,6 @@ public class Administrativo extends Funcionario {
         System.out.print("Digite o cpf do administrativo: ");
         String cpf = scanner.nextLine();
         setCpf(cpf);
+
     }
 }

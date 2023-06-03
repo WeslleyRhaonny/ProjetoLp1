@@ -5,7 +5,10 @@ import usuarios.Administrativo;
 import usuarios.Aluno;
 import usuarios.Professor;
 
+import java.sql.SQLOutput;
 import java.util.ArrayList;
+
+import static main.CriaTurmas.getTurmaPorIndice;
 
 public class ExibirDados {
     
@@ -26,6 +29,13 @@ public class ExibirDados {
         }
     }
 
+    public static void exibirTurmaSelecionada(int indiceTurma) {
+
+        // Exibir dados das turmas
+        System.out.println("\nDados das Turmas:");
+        System.out.println(getTurmaPorIndice(indiceTurma-1));
+    }
+
     public static void exibirProfessores(ArrayList<Professor> professores) {
         // Exibir dados dos alunos
         System.out.println("\nDados dos professores:");
@@ -40,4 +50,5 @@ public class ExibirDados {
     		System.out.println(administrativo);
     	}
     }
+
 }
