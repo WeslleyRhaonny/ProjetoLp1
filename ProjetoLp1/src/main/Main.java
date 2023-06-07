@@ -58,7 +58,7 @@ public class Main {
 
 					if (turmaSelecionada != null) {
 						turmaSelecionada.adicionarAluno(aluno);
-						System.out.println("Aluno adicionado com sucesso!");
+						System.out.println("\nAluno adicionado com sucesso!");
 					} else {
 						System.out.println("Número de turma inválido!");
 					}

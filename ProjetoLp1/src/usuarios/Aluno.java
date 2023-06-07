@@ -31,7 +31,7 @@ public class Aluno extends Usuario {
 	public void cadastrarAluno() {
 		Scanner scanner = new Scanner(System.in);
 
-		System.out.print("Digite o nome do aluno: ");
+		System.out.print("\nDigite o nome do aluno: ");
 		String nome = scanner.nextLine();
 		setNome(nome);
 

@@ -42,7 +42,7 @@ public class Professor extends Funcionario {
 		String cpf = scanner.nextLine();
 		setCpf(cpf);
 
-		System.out.println("Professor cadastrado com sucesso");
+		System.out.println("\nProfessor cadastrado com sucesso");
 	}
 
 	public void vincularTurma(Professor professor) {

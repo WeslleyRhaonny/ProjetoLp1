@@ -18,7 +18,7 @@ public class Administrativo extends Funcionario {
     public void cadastrarAdm(){
         Scanner scanner = new Scanner(System.in);
 
-        System.out.print("Digite o nome do administrativo: ");
+        System.out.print("\nDigite o nome do administrativo: ");
         String nome = scanner.nextLine();
         setNome(nome);
 
