@@ -38,7 +38,7 @@ public class Main {
 			System.out.println("10. Visualizar histórico de um aluno específico");
 			System.out.println("0. Sair");
 			System.out.print("Escolha uma opção: ");
-			//faltando implementar 8, 9 e 10
+			//faltando implementar 10
 			int opcao = scanner.nextInt();
 
 			switch (opcao) {
@@ -105,6 +105,69 @@ public class Main {
 				case 7:
 					exibirAdministrativos(administrativos);
 					break;
+
+				case 8:
+					// Folha de pagamento
+					double totalSalarios = 0.0;
+				
+					System.out.println("\nFolha de Pagamento:");
+					System.out.println("\nProfessores:");
+					for (Professor prof : professores) {
+						System.out.printf("%s - Salário: R$ %.2f", prof.getNome(), prof.calculaSalario());
+						totalSalarios += prof.calculaSalario();
+					}
+				
+					System.out.println("\n\nFuncionários Administrativos:");
+					for (Administrativo administrativo : administrativos) {
+						System.out.printf("%s - Salário: R$ %.2f\n", administrativo.getNome(), administrativo.getSalario());
+						totalSalarios += administrativo.getSalario();
+					}
+					
+					System.out.printf("\nValor total da folha de pagamento: R$ %.2f\n", totalSalarios);
+					break;
+	
+				case 9:
+					// Pesquisar por usuário específico
+					System.out.print("\nDigite o nome do usuário que deseja pesquisar: ");
+					String nomeUsuario = scanner.next();
+					boolean encontrado = false;
+				
+					for (Aluno aluno_a : alunos) {
+						if (aluno_a.getNome().equalsIgnoreCase(nomeUsuario)) {
+							System.out.println("\nDados do Aluno:");
+							System.out.println(aluno_a);
+							encontrado = true;
+							break;
+						}
+					}
+				
+					if (!encontrado) {
+						for (Professor profes : professores) {
+							if (profes.getNome().equalsIgnoreCase(nomeUsuario)) {
+								System.out.println("\nDados do Professor:");
+								System.out.println(profes);
+								encontrado = true;
+								break;
+							}
+						}
+					}
+				
+					if (!encontrado) {
+						for (Administrativo administrativo : administrativos) {
+							if (administrativo.getNome().equalsIgnoreCase(nomeUsuario)) {
+								System.out.println("\nDados do Administrativo:");
+								System.out.println(administrativo);
+								encontrado = true;
+								break;
+							}
+						}
+					}
+				
+					if (!encontrado) {
+						System.out.println("\nUsuário não encontrado!");
+					}
+					break;
+
 				case 0:
 					continuar = false;
 					break;
