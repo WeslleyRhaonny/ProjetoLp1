@@ -1,5 +1,6 @@
 package main;
 
+import dados_academicos.Disciplina;
 import dados_academicos.Turma;
 import usuarios.Administrativo;
 import usuarios.Aluno;
@@ -49,6 +50,10 @@ public class ExibirDados {
     	for(Administrativo administrativo : administrativos) {
     		System.out.println(administrativo);
     	}
+    }
+
+    public static void exibirHistorico(Aluno aluno, ArrayList<Disciplina> disciplinas){
+
     }
 
 }

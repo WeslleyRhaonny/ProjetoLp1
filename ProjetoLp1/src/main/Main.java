@@ -39,7 +39,8 @@ public class Main {
 			System.out.println("7. Dados dos administrativos");
 			System.out.println("8. Folha de pagamento");
 			System.out.println("9. Pesquisar usuário específico");
-			System.out.println("10. Visualizar histórico de um aluno específico");
+			System.out.println("10. Cadastrar notas de um aluno específico");
+			System.out.println("11. Visualizar histórico de uma aluno específico");
 			System.out.println("0. Sair");
 			System.out.print("Escolha uma opção: ");
 			//faltando implementar 10
@@ -167,14 +168,14 @@ public class Main {
 
 				case 10:
 
-					System.out.print("\nDigite o nome do aluno que deseja pesquisar: ");
+					System.out.print("\nDigite o nome do aluno que deseja cadastrar notas: ");
 					String nomeAluno = scanner.next();
 					boolean achado = false;
-					Aluno alunoD = new Aluno();
+					Aluno alunoD = null;
 
-					for (Aluno aluno_a : alunos) {
-						if (aluno_a.getNome().equalsIgnoreCase(nomeAluno)) {
-							alunoD = aluno_a;
+					for (Aluno alunoDis : alunos) {
+						if (alunoDis.getNome().equalsIgnoreCase(nomeAluno)) {
+							alunoD = alunoDis;
 							achado = true;
 						}
 					}
@@ -190,13 +191,31 @@ public class Main {
 					System.out.println("4 - História");
 					System.out.println("5 - Geografia");
 					System.out.println("Digite o índice correspondente a disciplina.");
-					int indiceDisciplina = scanner.nextInt();
-					Disciplina disciplinaSelecionada = getDisciplinaPorIndice(indiceDisciplina-1);
+					int indice = scanner.nextInt();
+					Disciplina disciplinaSelecionada = CriaDisciplinas.getDisciplinaPorIndice(indice - 1);
 					alunoD.cadastraNotas(disciplinaSelecionada);
-
 					break;
 
+				case 11:
+					System.out.print("\nDigite o nome do aluno que deseja visualizar o histórico: ");
+					String nomeAlunoH = scanner.next();
+					boolean achadoH = false;
+					Aluno alunoH = null;
 
+					for (Aluno alunoDis : alunos) {
+						if (alunoDis.getNome().equalsIgnoreCase(nomeAlunoH)) {
+							alunoH = alunoDis;
+							achadoH = true;
+						}
+					}
+
+					if (!achadoH) {
+						System.out.println("\nUsuário não encontrado!");
+						break;
+					}
+
+					alunoH.gerarHistorico();
+					break;
 				case 0:
 					continuar = false;
 					break;

@@ -15,7 +15,8 @@ public class Aluno extends Usuario {
 	private String matricula;
 	private Historico historico;
 	// Cada aluno tem um histórico. O hitórico pode ser um array de disciplinas, e cada disciplina tem uma nota.
-	private Disciplina[] disciplinas = new Disciplina[5];
+	private ArrayList<Disciplina> disciplinas = new ArrayList<>();
+
 	public String getMatricula() {
 		return matricula;
 	}
@@ -56,17 +57,44 @@ public class Aluno extends Usuario {
 		return super.toString() + ", Número de Matrícula: " + matricula;
 	}
 
-	public void cadastraNotas(Disciplina disciplinaSelecionada){
-		Scanner leitor = new Scanner(System.in);
-		System.out.println("Digite o inice desejado:");
-		int indice = leitor.nextInt();
-		disciplinas = getDisciplinaPorIndice(indice-1);
-		double arraynota[] = new double[3];
-		for (int i = 0; i < 3; i++){
-			System.out.println("Digite a nota " + (i+1) + ": ");
-			arraynota[i] = leitor.nextDouble();
+	public void cadastraNotas(Disciplina disciplina) {
+		boolean disciplinaExistente = false;
+		for (Disciplina d : disciplinas) {
+			if (d.getNome().equals(disciplina.getNome())) {
+				disciplinaExistente = true;
+				break;
+			}
 		}
-		disciplinaSelecionada.setNotas(arraynota);
-	}
+		if (disciplinaExistente==true) {
+			System.out.println("Já há notas cadastradas para esta disciplina");
+		}
+		else {
+			Scanner leitor = new Scanner(System.in);
+			System.out.println("Digite as notas para a disciplina " + disciplina.getNome() + ":");
 
+			double[] arrayNotas = new double[3];
+			for (int i = 0; i < 3; i++) {
+				double nota = 0;
+				System.out.print("Digite a nota " + (i + 1) + ": ");
+				nota = leitor.nextDouble();
+				do {
+					arrayNotas[i] = nota;
+					if(nota<0 || nota>10){
+						System.out.println("A nota deve ser maior ou igual a 0 e menor ou igual a 10");
+						System.out.println("Digite novamente a nota " + (i+1) + ": ");
+						nota = leitor.nextDouble();
+					}
+				}while(nota<0 || nota>10);
+			}
+			disciplina.setNotas(arrayNotas);
+			disciplina.calcularMedia();
+			disciplinas.add(disciplina);
+		}
+	}
+	public void gerarHistorico(){
+		System.out.println("Nome do aluno: " + super.getNome());
+		for(int i = 0; i<disciplinas.size();i++) {
+			System.out.println(disciplinas.get(i));
+		}
+	}
 }
