@@ -1,14 +1,17 @@
 package main;
 
+import dados_academicos.Disciplina;
 import dados_academicos.Turma;
 import main.ExibirDados;
 import usuarios.Administrativo;
 import usuarios.Aluno;
 import usuarios.Professor;
 
+import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import static main.CriaDisciplinas.*;
 import static main.CriaTurmas.*;
 import static main.ExibirDados.*;
 
@@ -17,6 +20,7 @@ public class Main {
 		Scanner scanner = new Scanner(System.in);
 		
 		criaTurmas();
+		criaDisciplinas();
 		
 		ArrayList<Aluno> alunos = new ArrayList<>();
 		ArrayList<Professor> professores = new ArrayList<>();
@@ -137,36 +141,61 @@ public class Main {
 							System.out.println("\nDados do Aluno:");
 							System.out.println(aluno_a);
 							encontrado = true;
-							break;
 						}
 					}
-				
-					if (!encontrado) {
+
 						for (Professor profes : professores) {
 							if (profes.getNome().equalsIgnoreCase(nomeUsuario)) {
 								System.out.println("\nDados do Professor:");
 								System.out.println(profes);
 								encontrado = true;
-								break;
 							}
 						}
-					}
-				
-					if (!encontrado) {
+
 						for (Administrativo administrativo : administrativos) {
 							if (administrativo.getNome().equalsIgnoreCase(nomeUsuario)) {
 								System.out.println("\nDados do Administrativo:");
 								System.out.println(administrativo);
 								encontrado = true;
-								break;
 							}
 						}
-					}
 				
 					if (!encontrado) {
 						System.out.println("\nUsuário não encontrado!");
 					}
 					break;
+
+				case 10:
+
+					System.out.print("\nDigite o nome do aluno que deseja pesquisar: ");
+					String nomeAluno = scanner.next();
+					boolean achado = false;
+					Aluno alunoD = new Aluno();
+
+					for (Aluno aluno_a : alunos) {
+						if (aluno_a.getNome().equalsIgnoreCase(nomeAluno)) {
+							alunoD = aluno_a;
+							achado = true;
+						}
+					}
+
+					if (!achado) {
+						System.out.println("\nUsuário não encontrado!");
+						break;
+					}
+
+					System.out.println("1 - Português");
+					System.out.println("2 - Matemática");
+					System.out.println("3 - Ciências");
+					System.out.println("4 - História");
+					System.out.println("5 - Geografia");
+					System.out.println("Digite o índice correspondente a disciplina.");
+					int indiceDisciplina = scanner.nextInt();
+					Disciplina disciplinaSelecionada = getDisciplinaPorIndice(indiceDisciplina-1);
+					alunoD.cadastraNotas(disciplinaSelecionada);
+
+					break;
+
 
 				case 0:
 					continuar = false;

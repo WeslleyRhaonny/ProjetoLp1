@@ -1,9 +1,13 @@
 package usuarios;
 
+import dados_academicos.Disciplina;
 import dados_academicos.Historico;
 import usuarios.Usuario;
 
+import java.util.ArrayList;
 import java.util.Scanner;
+
+import static main.CriaDisciplinas.getDisciplinaPorIndice;
 
 public class Aluno extends Usuario {
 	//Para os alunos é preciso registrar a matrícula e histórico escolar.
@@ -11,7 +15,7 @@ public class Aluno extends Usuario {
 	private String matricula;
 	private Historico historico;
 	// Cada aluno tem um histórico. O hitórico pode ser um array de disciplinas, e cada disciplina tem uma nota.
-
+	private Disciplina[] disciplinas = new Disciplina[5];
 	public String getMatricula() {
 		return matricula;
 	}
@@ -51,4 +55,18 @@ public class Aluno extends Usuario {
 	public String toString() {
 		return super.toString() + ", Número de Matrícula: " + matricula;
 	}
+
+	public void cadastraNotas(Disciplina disciplinaSelecionada){
+		Scanner leitor = new Scanner(System.in);
+		System.out.println("Digite o inice desejado:");
+		int indice = leitor.nextInt();
+		disciplinas = getDisciplinaPorIndice(indice-1);
+		double arraynota[] = new double[3];
+		for (int i = 0; i < 3; i++){
+			System.out.println("Digite a nota " + (i+1) + ": ");
+			arraynota[i] = leitor.nextDouble();
+		}
+		disciplinaSelecionada.setNotas(arraynota);
+	}
+
 }
