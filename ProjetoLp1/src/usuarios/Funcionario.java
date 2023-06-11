@@ -1,12 +1,11 @@
 package usuarios;
 
-import usuarios.Usuario;
-
 public class Funcionario extends Usuario {
 	// Para os funcionários da escola (professores e administrativos) deve-se registrar CPF e salário.
 	
 	protected String cpf;
 	protected String matricula;
+	double salario = 1300; //O salário do professor e dos demais funcionários é baseado em uma quantidade fixa de salário mínimo.
 
 	public String getCpf() {
 		return cpf;
@@ -26,9 +25,6 @@ public class Funcionario extends Usuario {
 
 	public void setMatricula(String matricula) {
 		this.matricula = matricula;
-	}
-
-	double salario = 1300; //O salário do professor e dos demais funcionários é baseado em uma quantidade fixa de salário mínimo.
-	
+	}	
 	
 }

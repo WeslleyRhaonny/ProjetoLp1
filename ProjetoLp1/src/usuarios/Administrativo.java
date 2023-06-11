@@ -1,7 +1,5 @@
 package usuarios;
 
-import usuarios.Funcionario;
-
 import java.util.Scanner;
 
 public class Administrativo extends Funcionario {
@@ -38,5 +36,6 @@ public class Administrativo extends Funcionario {
         String cpf = scanner.nextLine();
         setCpf(cpf);
 
+        scanner.close();
     }
 }

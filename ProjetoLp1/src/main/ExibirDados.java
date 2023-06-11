@@ -1,18 +1,19 @@
 package main;
 
-import dados_academicos.Disciplina;
 import dados_academicos.Turma;
 import usuarios.Administrativo;
 import usuarios.Aluno;
 import usuarios.Professor;
 
-import java.sql.SQLOutput;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 import static main.CriaTurmas.getTurmaPorIndice;
+import static main.CriaTurmas.turmas;
+
 
 public class ExibirDados {
-    
+	
 	public static void exibirAlunos(ArrayList<Aluno> alunos) {
         // Exibir dados dos alunos
         System.out.println("\nDados dos Alunos:");
@@ -28,6 +29,25 @@ public class ExibirDados {
         for (Turma turma : CriaTurmas.turmas) {
             System.out.println(turma);
         }
+    }
+    
+    public static void exibindoTurmas() {
+    	Scanner scanner = new Scanner(System.in);
+    	System.out.println("Qual turma você deseja imprimir?\n");
+		for (int i = 0; i < turmas.size(); i++) {
+			Turma turma = turmas.get(i);
+			System.out.println((i + 1) + ". " + turma.getSerie() + " - " + turma.getTurno());
+		}
+		System.out.println("7. Exibir todas as turmas");
+		int indiceTurma = scanner.nextInt();
+		if(indiceTurma<7 && indiceTurma>0) {
+			exibirTurmaSelecionada(indiceTurma);
+		} else if(indiceTurma == 7){
+			exibirTurmas();
+		}
+		else
+			System.out.println("Turma Inválida!");
+		scanner.close();
     }
 
     public static void exibirTurmaSelecionada(int indiceTurma) {
@@ -50,10 +70,6 @@ public class ExibirDados {
     	for(Administrativo administrativo : administrativos) {
     		System.out.println(administrativo);
     	}
-    }
-
-    public static void exibirHistorico(Aluno aluno, ArrayList<Disciplina> disciplinas){
-
     }
 
 }

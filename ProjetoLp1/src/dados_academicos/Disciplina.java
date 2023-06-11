@@ -1,13 +1,6 @@
 package dados_academicos;
 
-import usuarios.Aluno;
-
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Scanner;
-
-import static main.CriaDisciplinas.getDisciplinaPorIndice;
-import static main.CriaTurmas.getTurmaPorIndice;
 
 public class Disciplina {
 	// As disciplinas devem ter 3 notas (que podem ser dadas como array list).

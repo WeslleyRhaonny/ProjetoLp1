@@ -1,7 +1,6 @@
 package main;
 
 import dados_academicos.Disciplina;
-import dados_academicos.Turma;
 
 import java.util.ArrayList;
 

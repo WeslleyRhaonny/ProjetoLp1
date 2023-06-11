@@ -1,8 +1,6 @@
 package usuarios;
 
 import dados_academicos.Turma;
-import main.CriaTurmas;
-import usuarios.Funcionario;
 import java.util.Scanner;
 
 import static main.CriaTurmas.*;
@@ -43,6 +41,7 @@ public class Professor extends Funcionario {
 		setCpf(cpf);
 
 		System.out.println("\nProfessor cadastrado com sucesso");
+		scanner.close();
 	}
 
 	public void vincularTurma(Professor professor) {
@@ -102,6 +101,7 @@ public class Professor extends Funcionario {
 				}
 			}
 		}while(((indiceTurma<1 || indiceTurma>6) || verificador == 'S' || verificador == 's') && (turmasprof[0] == null || turmasprof[1] == null));
+		scanner.close();
 	}
 
 	public String toString() {

@@ -2,12 +2,9 @@ package usuarios;
 
 import dados_academicos.Disciplina;
 import dados_academicos.Historico;
-import usuarios.Usuario;
 
 import java.util.ArrayList;
 import java.util.Scanner;
-
-import static main.CriaDisciplinas.getDisciplinaPorIndice;
 
 public class Aluno extends Usuario {
 	//Para os alunos é preciso registrar a matrícula e histórico escolar.
@@ -51,6 +48,7 @@ public class Aluno extends Usuario {
 		System.out.print("Digite a matrícula do aluno: ");
 		String matricula = scanner.nextLine();
 		setMatricula(matricula);
+		scanner.close();
 	}
 
 	public String toString() {
@@ -89,6 +87,7 @@ public class Aluno extends Usuario {
 			disciplina.setNotas(arrayNotas);
 			disciplina.calcularMedia();
 			disciplinas.add(disciplina);
+			leitor.close();
 		}
 	}
 	public void gerarHistorico(){

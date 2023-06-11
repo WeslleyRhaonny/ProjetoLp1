@@ -2,12 +2,10 @@ package main;
 
 import dados_academicos.Disciplina;
 import dados_academicos.Turma;
-import main.ExibirDados;
 import usuarios.Administrativo;
 import usuarios.Aluno;
 import usuarios.Professor;
 
-import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -19,8 +17,8 @@ public class Main {
 	public static void main(String[] args) {
 		Scanner scanner = new Scanner(System.in);
 		
-		criaTurmas();
-		criaDisciplinas();
+		criaTurmas(); // Chama método que cria as turmas especificadas.
+		criaDisciplinas(); // Chama método que cria disciplinas especificadas.
 		
 		ArrayList<Aluno> alunos = new ArrayList<>();
 		ArrayList<Professor> professores = new ArrayList<>();
@@ -43,12 +41,11 @@ public class Main {
 			System.out.println("11. Visualizar histórico de uma aluno específico");
 			System.out.println("0. Sair");
 			System.out.print("Escolha uma opção: ");
-			//faltando implementar 10
 			int opcao = scanner.nextInt();
 
 			switch (opcao) {
 				case 1:
-					// Cadastra aluno
+					// Cadastra Aluno
 					Aluno aluno = new Aluno();
 					aluno.cadastrarAluno();
 					alunos.add(aluno);
@@ -70,7 +67,7 @@ public class Main {
 					break;
 					
 				case 2:
-					// Cadastra professor
+					// Cadastra Professor
 					Professor professor = new Professor();
 					professor.cadastrarProf();
 					professores.add(professor);
@@ -78,36 +75,27 @@ public class Main {
 					break;
 					
 				case 3:
+					// Cadastra Administrativo
 					Administrativo adm = new Administrativo();
 					adm.cadastrarAdm();
 					administrativos.add(adm);
 					break;
 				case 4:
+					// Dados dos alunos
 					exibirAlunos(alunos);
 					break;
 					
 				case 5:
-					System.out.println("Qual turma você deseja imprimir?\n");
-					for (int i = 0; i < turmas.size(); i++) {
-						Turma turma = turmas.get(i);
-						System.out.println((i + 1) + ". " + turma.getSerie() + " - " + turma.getTurno());
-					}
-					System.out.println("7. Exibir todas as turmas");
-					int indiceTurma = scanner.nextInt();
-					if(indiceTurma<7 && indiceTurma>0) {
-						exibirTurmaSelecionada(indiceTurma);
-					} else if(indiceTurma == 7){
-						exibirTurmas();
-					}
-					else
-						System.out.println("Turma Inválida!");
+					exibindoTurmas();
 					break;
 					
 				case 6:
+					// Dados dos professores
 					exibirProfessores(professores);
 					break;
 					
 				case 7:
+					// Dados dos administrativos
 					exibirAdministrativos(administrativos);
 					break;
 
@@ -135,13 +123,13 @@ public class Main {
 					// Pesquisar por usuário específico
 					System.out.print("\nDigite o nome do usuário que deseja pesquisar: ");
 					String nomeUsuario = scanner.next();
-					boolean encontrado = false;
+					boolean founded = false;
 				
 					for (Aluno aluno_a : alunos) {
 						if (aluno_a.getNome().equalsIgnoreCase(nomeUsuario)) {
 							System.out.println("\nDados do Aluno:");
 							System.out.println(aluno_a);
-							encontrado = true;
+							founded = true;
 						}
 					}
 
@@ -149,7 +137,7 @@ public class Main {
 							if (profes.getNome().equalsIgnoreCase(nomeUsuario)) {
 								System.out.println("\nDados do Professor:");
 								System.out.println(profes);
-								encontrado = true;
+								founded = true;
 							}
 						}
 
@@ -157,30 +145,30 @@ public class Main {
 							if (administrativo.getNome().equalsIgnoreCase(nomeUsuario)) {
 								System.out.println("\nDados do Administrativo:");
 								System.out.println(administrativo);
-								encontrado = true;
+								founded = true;
 							}
 						}
 				
-					if (!encontrado) {
+					if (!founded) {
 						System.out.println("\nUsuário não encontrado!");
 					}
 					break;
 
 				case 10:
-
+					// Cadastrar notas de um aluno
 					System.out.print("\nDigite o nome do aluno que deseja cadastrar notas: ");
-					String nomeAluno = scanner.next();
-					boolean achado = false;
-					Aluno alunoD = null;
+					String nome_aluno = scanner.next();
+					boolean finded = false;
+					Aluno d_aluno = null;
 
-					for (Aluno alunoDis : alunos) {
-						if (alunoDis.getNome().equalsIgnoreCase(nomeAluno)) {
-							alunoD = alunoDis;
-							achado = true;
+					for (Aluno i_aluno : alunos) {
+						if (i_aluno.getNome().equalsIgnoreCase(nome_aluno)) {
+							d_aluno = i_aluno;
+							finded = true;
 						}
 					}
 
-					if (!achado) {
+					if (!finded) {
 						System.out.println("\nUsuário não encontrado!");
 						break;
 					}
@@ -193,36 +181,40 @@ public class Main {
 					System.out.println("Digite o índice correspondente a disciplina.");
 					int indice = scanner.nextInt();
 					Disciplina disciplinaSelecionada = CriaDisciplinas.getDisciplinaPorIndice(indice - 1);
-					alunoD.cadastraNotas(disciplinaSelecionada);
+					d_aluno.cadastraNotas(disciplinaSelecionada);
 					break;
 
 				case 11:
+					// Visualizar histórico de um aluno
 					System.out.print("\nDigite o nome do aluno que deseja visualizar o histórico: ");
-					String nomeAlunoH = scanner.next();
-					boolean achadoH = false;
-					Aluno alunoH = null;
+					String aluno_name = scanner.next();
+					boolean n_finded = false;
+					Aluno n_aluno = null;
 
-					for (Aluno alunoDis : alunos) {
-						if (alunoDis.getNome().equalsIgnoreCase(nomeAlunoH)) {
-							alunoH = alunoDis;
-							achadoH = true;
+					for (Aluno j_aluno : alunos) {
+						if (j_aluno.getNome().equalsIgnoreCase(aluno_name)) {
+							n_aluno = j_aluno;
+							n_finded = true;
 						}
 					}
 
-					if (!achadoH) {
+					if (!n_finded) {
 						System.out.println("\nUsuário não encontrado!");
 						break;
 					}
 
-					alunoH.gerarHistorico();
+					n_aluno.gerarHistorico();
 					break;
 				case 0:
+					// Sair
 					continuar = false;
 					break;
 					
 				default:
+					// Opção inválida
 					System.out.println("Opção inválida!");
 			}
+			scanner.close();
 		}
 	}
 }
