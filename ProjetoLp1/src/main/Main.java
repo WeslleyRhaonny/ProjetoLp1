@@ -7,11 +7,13 @@ import usuarios.Aluno;
 import usuarios.Professor;
 
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 import static main.CriaDisciplinas.*;
 import static main.CriaTurmas.*;
 import static main.ExibirDados.*;
+import static main.Verificadores.*;
 
 public class Main {
 	public static void main(String[] args) {
@@ -41,7 +43,24 @@ public class Main {
 			System.out.println("11. Visualizar histórico de uma aluno específico");
 			System.out.println("0. Sair");
 			System.out.print("Escolha uma opção: ");
-			int opcao = scanner.nextInt();
+			int opcao = 0;
+			do {
+				try {
+					opcao = scanner.nextInt();
+					if (opcao < 0 || opcao > 11) {
+						System.out.println("A opção deve ser um valor inteiro maior ou igual a 0 e menor ou igual a 11");
+						System.out.println("Digite novamente a opção: ");
+						continue; // Retorna ao início do loop
+					} else {
+						break; // Sai do loop se a opção for válida
+					}
+				} catch (InputMismatchException e) {
+					System.out.println("\nOpção inválida.");
+					System.out.println("Digite novamente a opção: ");
+					scanner.nextLine(); // Limpa o buffer do scanner
+					continue; // Retorna ao início do loop
+				}
+			} while (true);
 
 			switch (opcao) {
 				case 1:
@@ -54,9 +73,29 @@ public class Main {
 						Turma turma = turmas.get(i);
 						System.out.println((i + 1) + ". " + turma.getSerie() + " - " + turma.getTurno());
 					}
+					scanner.nextLine();
+					String numTurma = scanner.nextLine();
+					int numTurmaInt = 1;
+					
+					boolean verificaNumTurma = isNumeric(numTurma);
+					if (verificaNumTurma == true){
+						numTurmaInt = Integer.parseInt(numTurma);
+					}
 
-					int numTurma = scanner.nextInt();
-					Turma turmaSelecionada = Turma.buscarTurmaPorIndice(numTurma - 1, turmas);
+					do{
+						if (numTurmaInt <= 0 || numTurmaInt > 6 || verificaNumTurma == false){
+							System.out.println("Turma inválida");
+							System.out.println("\nDigite o número da turma para adicionar o aluno: ");
+							numTurma = scanner.nextLine();
+						}
+						
+						verificaNumTurma = isNumeric(numTurma);
+						if (verificaNumTurma == true){
+							numTurmaInt = Integer.parseInt(numTurma);
+						}
+					}while(numTurmaInt <= 0 || numTurmaInt > 6 || verificaNumTurma == false);
+					
+					Turma turmaSelecionada = Turma.buscarTurmaPorIndice(numTurmaInt - 1, turmas);
 
 					if (turmaSelecionada != null) {
 						turmaSelecionada.adicionarAluno(aluno);
@@ -214,7 +253,7 @@ public class Main {
 					// Opção inválida
 					System.out.println("Opção inválida!");
 			}
-			scanner.close();
 		}
+		scanner.close();
 	}
 }
