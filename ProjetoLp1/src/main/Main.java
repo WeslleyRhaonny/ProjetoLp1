@@ -25,6 +25,63 @@ public class Main {
 		ArrayList<Aluno> alunos = new ArrayList<>();
 		ArrayList<Professor> professores = new ArrayList<>();
 		ArrayList<Administrativo> administrativos = new ArrayList<>();
+
+		//Intanciação das classes para testes
+		Aluno aluno1 = new Aluno();
+		Aluno aluno2 = new Aluno();
+		aluno1.setNome("Eliane");
+		aluno1.setEmail("eli@gmail.com");	
+		aluno1.setTelefone("81992052310");
+		aluno1.setMatricula("12345");
+		aluno2.setNome("Weslley");
+		aluno2.setEmail("weslley@gmail.com");	
+		aluno2.setTelefone("83982052789");
+		aluno2.setMatricula("56789");
+		alunos.add(aluno1);
+		alunos.add(aluno2);
+
+		Professor professor1 = new Professor();
+		Professor professor2 = new Professor();
+		professor1.setNome("Herick");
+		professor1.setEmail("herick@gmail.com");
+		professor1.setTelefone("83994568745");
+		professor1.setMatricula("125083");
+		professor1.setCpf("12345678900");
+		professor2.setNome("João");
+		professor2.setEmail("joao@gmail.com");
+		professor2.setTelefone("83984123785");
+		professor2.setMatricula("895426");
+		professor2.setCpf("10212578900");
+
+		Turma turmaTeste1 = getTurmaPorIndice(0);
+		Turma turmaTeste2 = getTurmaPorIndice(1);
+		turmaTeste1.adicionarAluno(aluno1);
+		turmaTeste2.adicionarAluno(aluno2);
+		turmaTeste1.setProfessor(professor1);
+		turmaTeste2.setProfessor(professor2);
+		Turma[] turmas1 = new Turma[2];
+		turmas1[0] = turmaTeste1;
+		professor1.setTurmasprof(turmas1);
+		Turma[] turmas2 = new Turma[2];
+		turmas2[1] = turmaTeste2;
+		professor2.setTurmasprof(turmas2);
+		professores.add(professor1);
+		professores.add(professor2);
+
+		Administrativo administrativo1 = new Administrativo();
+		Administrativo administrativo2 = new Administrativo();
+		administrativo1.setNome("Mel");
+		administrativo1.setEmail("mel@gmail.com");
+		administrativo1.setTelefone("83991256481");
+		administrativo1.setMatricula("15825");
+		administrativo1.setCpf("12468748272");
+		administrativo2.setNome("Jujuba");
+		administrativo2.setEmail("jujuba@gmail.com");
+		administrativo2.setTelefone("83965238978");
+		administrativo2.setMatricula("18652");
+		administrativo2.setCpf("10245869252");
+		administrativos.add(administrativo1);
+		administrativos.add(administrativo2);
 		
 		boolean continuar = true;
 		while (continuar) {
@@ -145,7 +202,7 @@ public class Main {
 					System.out.println("\nFolha de Pagamento:");
 					System.out.println("\nProfessores:");
 					for (Professor prof : professores) {
-						System.out.printf("%s - Salário: R$ %.2f", prof.getNome(), prof.calculaSalario());
+						System.out.printf("\n%s - Salário: R$ %.2f", prof.getNome(), prof.calculaSalario());
 						totalSalarios += prof.calculaSalario();
 					}
 				

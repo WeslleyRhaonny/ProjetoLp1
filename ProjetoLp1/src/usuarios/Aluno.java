@@ -131,7 +131,6 @@ public class Aluno extends Usuario {
 			disciplina.setNotas(arrayNotas);
 			disciplina.calcularMedia();
 			disciplinas.add(disciplina);
-			//leitor.close();
 		}
 	}
 	public void gerarHistorico(){

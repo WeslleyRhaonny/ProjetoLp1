@@ -95,6 +95,5 @@ public class Administrativo extends Funcionario {
         setCpf(cpf);
 
         System.out.println("\nAdministrativo cadastrado com sucesso");
-        //scanner.close();
     }
 }

@@ -9,10 +9,18 @@ import static main.Verificadores.*;
 public class Professor extends Funcionario {
 
 	protected Turma turmasprof[];
-	
+
 	public Professor() {
 		this.turmasprof = new Turma[2]; // Inicializa o array de turmas com tamanho 2
 	}
+
+	public Turma[] getTurmasprof() {
+        return turmasprof;
+    }
+
+    public void setTurmasprof(Turma[] turmasprof) {
+        this.turmasprof = turmasprof;
+    }
 	
 	public double calculaSalario() {
 		return super.salario*2.3;
@@ -98,7 +106,6 @@ public class Professor extends Funcionario {
 		setCpf(cpf);
 
 		System.out.println("\nProfessor cadastrado com sucesso");
-		//scanner.close();
 	}
 
 	public void vincularTurma(Professor professor) {
@@ -153,19 +160,27 @@ public class Professor extends Funcionario {
 
 			
 			if((turmasprof[0] == null || turmasprof[1] == null)) {
-				System.out.println("\nDeseja vincular mais turmas? \nDigite 'S' para Sim ou 'N' para Não.");
+				System.out.println("\nDeseja vincular mais turmas? \nDigite 'S' para Sim ou qualquer outra tecla para Não.");
 				verificador = scanner.next().charAt(0);
 				scanner.nextLine();
-				//if(verificador == 'S' || verificador == 's') {
-					//System.out.println("\nDigite o número da turma para vincular o professor: ");
-					//for (int i = 0; i < turmas.size(); i++) {
-						//Turma turma = turmas.get(i);
-						//System.out.println((i + 1) + ". " + turma.getSerie() + " - " + turma.getTurno());
-					//}
-				//}
+				
+				if(verificador == 'S' || verificador == 's') {
+					System.out.println("\nDigite o número da turma para vincular o professor: ");
+					for (int i = 0; i < turmas.size(); i++) {
+						Turma turma = turmas.get(i);
+						System.out.println((i + 1) + ". " + turma.getSerie() + " - " + turma.getTurno());
+					}
+		
+					numTurma = scanner.nextLine();
+					numTurmaInt = 1;
+					
+					verificaNumTurma = isNumeric(numTurma);
+					if (verificaNumTurma == true){
+						numTurmaInt = Integer.parseInt(numTurma);
+					}
+				}
 			}
 		}while(((numTurmaInt<1 || numTurmaInt>6) || verificador == 'S' || verificador == 's') && (turmasprof[0] == null || turmasprof[1] == null));
-		//scanner.close();
 	}
 
 	public String toString() {

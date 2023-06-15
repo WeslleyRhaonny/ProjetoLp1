@@ -47,7 +47,6 @@ public class ExibirDados {
 		}
 		else
 			System.out.println("Turma Inválida!");
-		scanner.close();
     }
 
     public static void exibirTurmaSelecionada(int indiceTurma) {
