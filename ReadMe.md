@@ -54,9 +54,9 @@ Em conjunto, essas ferramentas proporcionaram um ambiente de desenvolvimento rob
 
 Um exemplo de gestão eficiente de código proporcionado pelas IDEs pode ser exposto pela facilidade em estruturar pacotes. No referido projeto, foi utilizada uma estruturação simples para separar classes de controle, usuários (professor, aluno e administrativo) e classes voltadas aos dados acadêmicos (disciplinas, notas). De maneira resumida, pode-se observar como estão organizados os pacotes de acordo com a imagem abaixo:
 
-![novoDiagrama](https://github.com/WeslleyRhaonny/ProjetoLp1/assets/97205293/f60bdfd0-6b43-4ace-bad1-95f5e550bdd3)
+![novoDiagrama](https://github.com/WeslleyRhaonny/ProjetoLp1/assets/97205293/2a5b4c66-9af2-4982-b7bc-84c28690dba6)
 <div align="center">
-<img src="https://github.com/WeslleyRhaonny/ProjetoLp1/assets/97205293/f60bdfd0-6b43-4ace-bad1-95f5e550bdd3" width="0px" />
+<img src="https://github.com/WeslleyRhaonny/ProjetoLp1/assets/97205293/2a5b4c66-9af2-4982-b7bc-84c28690dba6" width="0px" />
 </div>
 
 ## RESULTADOS E CONSIDERAÇÕES FINAIS
