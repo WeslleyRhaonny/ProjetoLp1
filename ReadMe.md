@@ -26,9 +26,9 @@
 
   De forma prévia à estruturação das classes, foi pensado nos elementos que iriam compor o sistema, incluindo os que foram propostos em caráter obrigatório. Após isso, houve uma análise de como poderíamos tratar esses elementos, definindo-os como classes padrões, interfaces, ou classes abstratas, visto que são critérios que deveriam ser abordados no projeto. Diante disso, foi elaborado um diagrama de classes que pode ser visualizado logo abaixo:
 
-![diagramaAtualizado](https://github.com/WeslleyRhaonny/ProjetoLp1/assets/97205293/6b82dbe4-3a96-4393-9787-60683fe4d247)
+![Diagrama sem nome (1)](https://github.com/WeslleyRhaonny/ProjetoLp1/assets/97205293/0062f722-6848-4ba2-afb2-60553a4579d9)
 <div align="center">
-<img src="https://github.com/WeslleyRhaonny/ProjetoLp1/assets/97205293/6b82dbe4-3a96-4393-9787-60683fe4d247" width="0px" />
+<img src="https://github.com/WeslleyRhaonny/ProjetoLp1/assets/97205293/0062f722-6848-4ba2-afb2-60553a4579d9" width="0px" />
 </div>
   
   Para melhor entendimento, existem alguns pontos que devem ser ressaltados:
